@@ -37,8 +37,8 @@ RUN apt-get install -y \
     build-essential \
     dnsutils iftop vnstat hping3 iperf3 bmon nmap tcpdump speedtest-cli \
     sudo \
+    ncdu \
     kubectl
-RUN apt-get install -y ncdu
 
 COPY --from=rustup --chown=toolbox:toolbox /home/toolbox/.rustup /home/toolbox/.rustup
 COPY --from=rustup --chown=toolbox:toolbox /home/toolbox/.cargo /home/toolbox/.cargo
