@@ -24,7 +24,7 @@ RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sour
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN apt-get update
 RUN apt-get install -y \
-    gnupg2 openssh-client sshfs \
+    gnupg2 openssh-client sshfs git \
     zsh fish mksh \
     openjdk-13-jre-headless \
     curl wget \
