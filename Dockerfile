@@ -44,7 +44,16 @@ COPY --from=rustup --chown=toolbox:toolbox /home/toolbox/.rustup /home/toolbox/.
 COPY --from=rustup --chown=toolbox:toolbox /home/toolbox/.cargo /home/toolbox/.cargo
 COPY --from=bat --chown=toolbox:toolbox /home/toolbox/.cargo/bin/bat /home/toolbox/.cargo/bin/bat
 
+ENV GOLANG_VERSION 1.14.4
+ENV GOPATH /usr/local/go
+RUN wget -O go.tgz https://golang.org/dl/go1.14.4.linux-amd64.tar.gz && tar -C /usr/local -xzf go.tgz && rm go.tgz && \
+    mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+
+ENV PATH $GOPATH/bin:$PATH
+
 USER toolbox
 WORKDIR /home/toolbox
+
+ENV PATH /home/toolbox/.cargo/bin:$PATH
 
 ENTRYPOINT bash
