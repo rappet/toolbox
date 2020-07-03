@@ -56,4 +56,4 @@ WORKDIR /home/toolbox
 
 ENV PATH /home/toolbox/.cargo/bin:$PATH
 
-ENTRYPOINT bash
+CMD bash
